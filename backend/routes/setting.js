@@ -10,30 +10,30 @@ const writeFileAsync = promisify(fs.writeFile);
 
 
 // --------------------------------------------POST SETTING DATA API---------------------------------------------
-// settingRouter.post('/setting', async (req, res) => {
+settingRouter.post('/setting', async (req, res) => {
 
-//     const {ridetimeout, stop} = req.body;
-//     console.log("16", req.body)
+    const {ridetimeout, stop} = req.body;
+    console.log("16", req.body)
 
-//     try {
-//         const settingData = new SettingModel({
-//             ridetimeout: ridetimeout,
-//             stop: stop,
-//         })
+    try {
+        const settingData = new SettingModel({
+            ridetimeout: ridetimeout,
+            stop: stop,
+        })
 
-//         await settingData.save();
-//         console.log(settingData);
-//         res.status(200).json({
-//             success: true,
-//             message: "Setting Data Added Successfully",
-//             settingData,
-//           });
+        await settingData.save();
+        console.log(settingData);
+        res.status(200).json({
+            success: true,
+            message: "Setting Data Added Successfully",
+            settingData,
+          });
 
-//     } catch (error) {
-//     console.log(error);
-//     res.status(500).json({ success: false, message: error });
-//     }
-// })
+    } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, message: error });
+    }
+})
 
 
 // --------------------------------------------GET SETTING DATA API---------------------------------------------
@@ -66,8 +66,8 @@ settingRouter.get('/settingdata', async (req, res) => {
 // --------------------------------------------UPDATE SETTING DATA API---------------------------------------------//
 settingRouter.put("/updatesetting", async (req, res) => {
     try {
-      // const {ridetimeout, stop} = req.body;
       // console.log("68",req.body);
+      
       const id = req.body.id
       const STOP = +req.body.settingdata.stop
       const RIDE_TIMEOUT = +req.body.settingdata.ridetimeout
@@ -78,39 +78,8 @@ settingRouter.put("/updatesetting", async (req, res) => {
       const twilioPhoneNumber = req.body.settingdata.twilioPhoneNumber
       const STRIPE_Publishable_key = req.body.settingdata.STRIPE_Publishable_key
       const STRIPE_Secret_key = req.body.settingdata.STRIPE_Secret_key
-
-      // if(STOP){
-      //   data = {stop: STOP};
-      // }else if(RIDE_TIMEOUT){
-      //   data = {ridetimeout: RIDE_TIMEOUT};
-      // }else if(EMAIL_USER){
-      //   data = {EMAIL_USER: EMAIL_USER};
-      // }else if(EMAIL_PASSWORD){
-      //   data = {EMAIL_PASSWORD: EMAIL_PASSWORD};
-      // }else if(accountSid){
-      //   data = {accountSid: accountSid};
-      // }else if(authToken){
-      //   data = {authToken: authToken};
-      // }else if(twilioPhoneNumber){
-      //   data = {twilioPhoneNumber: twilioPhoneNumber};
-      // }else if(STRIPE_Publishable_key){
-      //   data = {STRIPE_Publishable_key: STRIPE_Publishable_key};
-      // }else if(STRIPE_Secret_key){
-      //   data = {STRIPE_Secret_key: STRIPE_Secret_key};
-      // }else{
-      //   data = {
-      //     ridetimeout: RIDE_TIMEOUT, 
-      //     stop: STOP,
-      //     EMAIL_USER: EMAIL_USER,
-      //     EMAIL_PASSWORD: EMAIL_PASSWORD,
-      //     accountSid: accountSid,
-      //     authToken: authToken,
-      //     twilioPhoneNumber: twilioPhoneNumber,
-      //     STRIPE_Publishable_key: STRIPE_Publishable_key,
-      //     STRIPE_Secret_key:  STRIPE_Secret_key
-      //   }
-      // }
-  
+      
+      
       data = {
         ridetimeout: RIDE_TIMEOUT, 
         stop: STOP,
@@ -122,11 +91,13 @@ settingRouter.put("/updatesetting", async (req, res) => {
         STRIPE_Publishable_key: STRIPE_Publishable_key,
         STRIPE_Secret_key:  STRIPE_Secret_key
       }
-
+      // console.log(data)
+      // console.log(id)
+      
       let settingdata = await SettingModel.findByIdAndUpdate(id ,data, { new: true });
 
       await settingdata.save()
-      // console.log("72",settingdata)
+      console.log("72",settingdata)
 
       if (settingdata) {
         const ridetimeout = settingdata.ridetimeout;
@@ -142,10 +113,10 @@ settingRouter.put("/updatesetting", async (req, res) => {
           message: "Setting Data Updated Successfully",
           settingdata,
         });
-    } catch (error) {
-      console.log(error);
-      res.status(500).json({ success: false, message: error, error: error.message });
-    }
+      } catch (error) {
+        console.log(error);
+        res.status(500).json({ success: false, message: error, error: error.message });
+      }
   });
 
 

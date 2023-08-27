@@ -11,10 +11,10 @@ export class SettingService {
 
   constructor(private http: HttpClient) { }
 
-  // addSetting(formValues: any) {
-  //   console.log(formValues)
-  //   return this.http.post<any>(`${this.serverUrl}/setting`, formValues);
-  // }
+  addSetting(formValues: any) {
+    console.log(formValues)
+    return this.http.post<any>(`${this.serverUrl}/setting`, formValues);
+  }
   get_setting_data() {
     return this.http.get<any>(`${this.serverUrl}/settingdata`);
   }

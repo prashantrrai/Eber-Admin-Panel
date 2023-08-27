@@ -111,42 +111,8 @@ export class SettingComponent {
   }
 
 
-  //----------------------------------GET CREDENTIALS FROM .ENV--------------------------------------//
-  // getCredentials(){
-  //   this._setting.getEnvData().subscribe({
-  //     next: (response: any) => {
-  //       console.log(response);
-  //       this.credentials = response
-  //       this.EMAIL_USER = response.EMAIL_USER;
-  //       this.EMAIL_PASSWORD = response.EMAIL_PASSWORD;
-  //       this.accountSid = response.accountSid;
-  //       this.authToken = response.authToken;
-  //       this.twilioPhoneNumber = response.twilioPhoneNumber;
-  //       this.STRIPE_Publishable_key = response.STRIPE_Publishable_key;
-  //       this.STRIPE_Secret_key = response.STRIPE_Secret_key;
-  //     },
-  //     error: (error: any) => {
-  //       console.log(error);
-  //     },
-  //   });
-  // }
-
   //-------------------------------EXTRA COMMON CODE------------------------------------//
   resetTimer() {
     this.authService.resetInactivityTimer();
   }
 }
-
-
-    // console.log(this.settingdata);
-    // this.settingForm.patchValue({
-    //     ridetimeout: this.settingdata.settingData[0].ridetimeout,
-    //     stop: this.settingdata.settingData[0].stop,
-    //     EMAIL_USER: this.settingdata.envData.EMAIL_USER,
-    //     EMAIL_PASSWORD: this.settingdata.envData.EMAIL_PASSWORD,
-    //     accountSid: this.settingdata.envData.accountSid,
-    //     authToken: this.settingdata.envData.authToken,
-    //     twilioPhoneNumber: this.settingdata.envData.twilioPhoneNumber,
-    //     STRIPE_Publishable_key: this.settingdata.envData.STRIPE_Publishable_key,
-    //     STRIPE_Secret_key: this.settingdata.envData.STRIPE_Secret_key,
-    // });
