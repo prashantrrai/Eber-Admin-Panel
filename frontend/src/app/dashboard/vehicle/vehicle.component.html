@@ -54,7 +54,7 @@
 
   <div class="card-container container d-flex flex-wrap" >
     <div class="m-4 card" *ngFor="let vehicle of vehiclesData">
-      <img class="card-img-top" src="http://localhost:4000/{{vehicle.vehicleImage}}" id="vehicle_image" name="image" alt="vehicle-image" />
+      <img class="card-img-top" [src]="apiUrl + '/' + vehicle.vehicleImage" alt="vehicle-profile" id="vehicle_image" name="image"/>
       <div class="card-body">
         <h5 class="card-title">{{ vehicle.vehicleName }}</h5>
         <button mat-button mat-stroked-button color="primary" (click)="editVehicle(vehicle)" color="accent"  mat-button>

@@ -5,13 +5,14 @@ import { Injectable, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { Socket, io } from 'socket.io-client';
 import { NotificationsService } from './notifications.service';
+import { environment } from 'src/environment/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SocketService implements OnInit, OnDestroy{
   private socket: Socket;
-  url = 'http://localhost:4000'
+  private url = environment.apiUrl
   // private errorSub: Subscription = new Subscription()
 
   constructor(private _notification: NotificationsService) {

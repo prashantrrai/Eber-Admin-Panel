@@ -11,11 +11,25 @@ const initializeSocket = require("./utils/socket")
 // const cronJob = require('./utils/cron');
 // cronJob.start();
 
-// console.log(Date.now());
-// console.log(new Date().getTime());
 
 const cors = require("cors");
-app.use(cors());
+
+const allowedOrigins = [
+  "http://localhost:4200",
+  "https://eberride.netlify.app/login"
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+};
+
+app.use(cors(corsOptions));
 
 const path = require("path");
 const img_path = path.join(__dirname, "/Public/Vehicle");
@@ -76,24 +90,14 @@ app.use(feedbackRoutes)
 
 app.get("/", async (req, res) => {
   res.json({
-    Message: "Hello Prashant, API is Working Fine!",
-    "Login Data": `http:localhost:4000/logindata`,
-    "Vehicle Data": `http:localhost:4000/vehicledata`,
+    success: true,
+    message: "Welcome Admin, API is Working Fine!",
+    "City Data": 'https://eber.onrender.com/citydata',
+    "Vehicle Data": 'https://eber.onrender.com/vehicledata',
   });
 });
 
 initializeSocket(http)
 http.listen(PORT, () => {
-  // const today = new Date();
-  //   const yyyy = today.getFullYear();
-  //   let mm = today.getMonth() + 1; // Months start at 0!
-  //   let dd = today.getDate();
-
-  //   if (dd < 10) dd = '0' + dd;
-  //   if (mm < 10) mm = '0' + mm;
-
-  //   const formattedToday = dd + '/' + mm + '/' + yyyy;
-
-  //   console.log(`${formattedToday} is a Gift`)
   console.log(`Server is running on http://localhost:${PORT}`);
 });

@@ -4,6 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { StripeService } from 'src/app/Service/stripe.service';
 import { loadStripe, } from '@stripe/stripe-js';
+import { environment } from 'src/environment/environment.prod';
 
 
 @Component({
@@ -12,6 +13,8 @@ import { loadStripe, } from '@stripe/stripe-js';
   styleUrls: ['./stripe.component.css']
 })
 export class StripeComponent {
+  public apiUrl = environment.apiUrl;
+  
   selectddefaultid: any;
   defalutcard: any;
   cardLists: any;
@@ -68,7 +71,7 @@ export class StripeComponent {
         console.log("Token:", token);
         
   
-        const response = await fetch(`http://localhost:4000/addcard/${id}`, {
+        const response = await fetch(`${this.apiUrl}/addcard/${id}`, {
           method: 'POST',
           headers: {
             'Content-type': 'Application/json'
@@ -121,7 +124,7 @@ export class StripeComponent {
       console.log(customerId);
       console.log(cardId);
       this.http
-        .patch(`http://localhost:4000/setdefaultcard/${customerId}`, { cardId })
+        .patch(`${this.apiUrl}/setdefaultcard/${customerId}`, { cardId })
         .subscribe(
           (data:any) => {
             console.log(data);

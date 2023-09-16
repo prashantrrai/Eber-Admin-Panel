@@ -18,7 +18,7 @@
         </thead>
         <tbody>
         <tr *ngFor="let driver of driverArray">
-          <td><img src="http://localhost:4000/{{ driver.profile}}" alt="driver-profile"></td>
+          <td><img [src]="apiUrl + '/' + driver.profile" alt="driver-profile" /></td>
           <td>{{ driver.drivername }}</td>
           <td>{{ driver.driveremail }}</td>
           <td>{{driver.countrycode + " " + driver.driverphone}}</td>

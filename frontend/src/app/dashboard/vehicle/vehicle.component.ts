@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { VehicleService } from "../../Service/vehicle.service";
 import { ToastrService } from "ngx-toastr";
 import { AuthService } from "../../Service/auth.service";
+import { environment } from "src/environment/environment.prod";
 
 @Component({
   selector: "app-vehicle",
@@ -10,6 +11,8 @@ import { AuthService } from "../../Service/auth.service";
   styleUrls: ["./vehicle.component.css"],
 })
 export class VehicleComponent implements OnInit {
+  public apiUrl = environment.apiUrl;
+  
   vehicleForm!: FormGroup;
   AddbuttonForm: boolean = false;
   updateButtonForm: boolean = false;

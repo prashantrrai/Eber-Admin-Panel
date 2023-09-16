@@ -3,6 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { SocketService } from 'src/app/Service/socket.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { FeedbackComponent } from 'src/app/shared/feedback/feedback.component';
+import { environment } from 'src/environment/environment.prod';
 
 @Component({
   selector: 'app-runningrequest',
@@ -10,6 +11,8 @@ import { FeedbackComponent } from 'src/app/shared/feedback/feedback.component';
   styleUrls: ['./runningrequest.component.css']
 })
 export class RunningrequestComponent {
+  public apiUrl = environment.apiUrl;
+  
   assignedArray: any;
   driverId: any;
   rideId: any;

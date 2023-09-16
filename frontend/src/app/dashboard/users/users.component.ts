@@ -5,6 +5,7 @@ import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { ToastrService } from "ngx-toastr";
 import { UsersService } from "src/app/Service/users.service";
 import { StripeComponent, userdata } from "../stripe/stripe.component";
+import { environment } from "src/environment/environment.prod";
 
 @Component({
   selector: "app-users",
@@ -12,6 +13,8 @@ import { StripeComponent, userdata } from "../stripe/stripe.component";
   styleUrls: ["./users.component.css"],
 })
 export class UsersComponent {
+  public apiUrl = environment.apiUrl;
+  
   userupdateForm!: FormGroup;
   AddForm!: FormGroup;
   AddbuttonForm: boolean = false;

@@ -1,12 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { DriverService } from 'src/app/Service/driver.service';
-import { environment } from 'src/environment/environment';
-import { MatIcon } from '@angular/material/icon';
-import { ConfirmrideService } from 'src/app/Service/confirmride.service';
 import { SocketService } from 'src/app/Service/socket.service';
-import { RunningrequestComponent } from 'src/app/dashboard/runningrequest/runningrequest.component';
 import { RunningrequestService } from 'src/app/Service/runningrequest.service';
+import { environment } from 'src/environment/environment.prod';
 
 @Component({
   selector: 'app-assign-driver',
@@ -14,10 +10,9 @@ import { RunningrequestService } from 'src/app/Service/runningrequest.service';
   styleUrls: ['./assign-driver.component.css']
 })
 export class AssignDriverComponent implements OnInit {
-  private baseUrl = environment.apiUrl
+  public apiUrl = environment.apiUrl
   
   dataArray: any[] = [];
-  // assignedDrivers: any[] = [];
   driverArray: any[] = [];
   search!: string;
   currentPage!: number;

@@ -1,6 +1,6 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://bloggingbackend-qh6a.onrender.com',
+    apiUrl: 'https://eber.onrender.com',
     apiKey: 'your-production-api-key',
     frontendUrl: 'https://eberride.netlify.app',
   };

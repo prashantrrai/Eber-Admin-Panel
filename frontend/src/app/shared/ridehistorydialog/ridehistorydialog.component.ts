@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { environment } from 'src/environment/environment.prod';
 declare var google: any;
 declare namespace google.maps {
   interface LatLng {
@@ -42,6 +43,8 @@ declare namespace google.maps {
   styleUrls: ['./ridehistorydialog.component.css']
 })
 export class RidehistorydialogComponent implements OnInit {
+  public apiUrl = environment.apiUrl;
+  
   dataArray: any[] = [];
   // map: any =  google.maps.Map;
   map: any = null;

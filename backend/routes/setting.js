@@ -39,19 +39,20 @@ settingRouter.post('/setting', async (req, res) => {
 // --------------------------------------------GET SETTING DATA API---------------------------------------------
 settingRouter.get('/settingdata', async (req, res) => {
 
-  // const envData = {
-  //   EMAIL_USER: process.env.EMAIL_USER,
-  //   EMAIL_PASSWORD: process.env.EMAIL_PASSWORD,
-  //   accountSid: process.env.accountSid,
-  //   authToken: process.env.authToken,
-  //   twilioPhoneNumber: process.env.twilioPhoneNumber,
-  //   STRIPE_Secret_key: process.env.STRIPE_Secret_key,
-  //   STRIPE_Publishable_key: process.env.STRIPE_Publishable_key
-  // };
+  const envData = {
+    EMAIL_USER: process.env.EMAIL_USER,
+    EMAIL_PASSWORD: process.env.EMAIL_PASSWORD,
+    accountSid: process.env.accountSid,
+    authToken: process.env.authToken,
+    twilioPhoneNumber: process.env.twilioPhoneNumber,
+    STRIPE_Secret_key: process.env.STRIPE_Secret_key,
+    STRIPE_Publishable_key: process.env.STRIPE_Publishable_key
+  };
   // res.json(envData);
-
   // console.log("51",envData)
+
     try {
+        // const settingData = await SettingModel.create(envData);
         const settingData = await SettingModel.find();
         // console.log("54",settingData);
         

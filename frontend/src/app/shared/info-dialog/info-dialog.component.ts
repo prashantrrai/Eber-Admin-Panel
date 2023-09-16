@@ -4,7 +4,7 @@ import {
   MatDialog,
   MatDialogRef,
 } from "@angular/material/dialog";
-import {environment} from 'src/environment/environment';
+import { environment } from "src/environment/environment.prod";
 
 @Component({
   selector: "app-info-dialog",
@@ -12,8 +12,9 @@ import {environment} from 'src/environment/environment';
   styleUrls: ["./info-dialog.component.css"],
 })
 export class InfoDialogComponent implements OnInit{
+  public apiUrl = environment.apiUrl;
+
   dataArray: any[] = [];
-  private baseUrl = environment.apiUrl;
 
   constructor(
     public dialog: MatDialog,

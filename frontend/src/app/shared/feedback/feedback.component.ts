@@ -2,8 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef , MatDialogConfig} from '@angular/material/dialog';
-// import { MatIcon } from '@angular/material/icon';
-
+import { environment } from 'src/environment/environment.prod';
 
 @Component({
   selector: 'app-feedback',
@@ -12,7 +11,7 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef , MatDialogConfig} from '@angu
 })
 export class FeedbackComponent implements OnInit{
 
-  private serverUrl = 'http://localhost:4000';
+  private serverUrl = environment.apiUrl;
 
   feedbackForm!: FormGroup;
   

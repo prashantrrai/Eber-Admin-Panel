@@ -1,12 +1,15 @@
 import { Component, HostListener } from '@angular/core';
 import { AuthService } from '../Service/auth.service';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environment/environment.prod';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   
 })  
 export class DashboardComponent {
+  public apiUrl = environment.apiUrl;
+  
   isDashboardRoute: boolean = false;
 
   constructor(private authService: AuthService, private route: ActivatedRoute) {}

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environment/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { Observable } from 'rxjs';
 export class DriverService {
 
 
-  private serverUrl = 'http://localhost:4000';
+  private serverUrl = environment.apiUrl;
   // private countryAPI = 'https://restcountries.com/v3.1/all'
 
 

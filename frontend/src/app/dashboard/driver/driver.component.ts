@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/Service/auth.service';
 import { DriverService } from 'src/app/Service/driver.service';
 import { SocketService } from 'src/app/Service/socket.service';
+import { environment } from 'src/environment/environment.prod';
 
 @Component({
   selector: 'app-driver',
@@ -11,6 +12,8 @@ import { SocketService } from 'src/app/Service/socket.service';
   styleUrls: ['./driver.component.css']
 })
 export class DriverComponent {
+  public apiUrl = environment.apiUrl;
+  
   driverForm!: FormGroup;
   driverFormButton: boolean = false;
   selectedcountrycode: any;

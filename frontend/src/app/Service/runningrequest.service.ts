@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environment/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RunningrequestService {
-  private url = 'http://localhost:4000'
+  private url = environment.apiUrl
 
   constructor() {}
 
