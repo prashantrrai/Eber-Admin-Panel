@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 require('dotenv').config()
 
 // const url = 'mongodb://0.0.0.0:27017/login-auth';
-const url = process.env.MONGO_URL;
+const URL = process.env.MONGO_URL;
 
-mongoose.connect(url)
+mongoose.connect(URL)
 .then(() => {
   console.log("Database Connected")
 })

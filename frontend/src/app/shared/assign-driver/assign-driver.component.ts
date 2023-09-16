@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DriverService } from 'src/app/Service/driver.service';
-import { environment } from 'src/app/environment/environment';
+import { environment } from 'src/environment/environment';
 import { MatIcon } from '@angular/material/icon';
 import { ConfirmrideService } from 'src/app/Service/confirmride.service';
 import { SocketService } from 'src/app/Service/socket.service';
@@ -14,7 +14,8 @@ import { RunningrequestService } from 'src/app/Service/runningrequest.service';
   styleUrls: ['./assign-driver.component.css']
 })
 export class AssignDriverComponent implements OnInit {
-  baseUrl = environment.baseUrl
+  private baseUrl = environment.apiUrl
+  
   dataArray: any[] = [];
   // assignedDrivers: any[] = [];
   driverArray: any[] = [];
