@@ -2,16 +2,9 @@ const express = require("express");
 const app = express();
 require("dotenv").config();
 const PORT = process.env.PORT || 8080;
-
-const SettingModel = require('./models/setting');
-
 const http = require('http').Server(app);
 const initializeSocket = require("./utils/socket")
-
-// const cronJob = require('./utils/cron');
-// cronJob.start();
-
-
+require("./database/db");
 const cors = require("cors");
 
 const allowedOrigins = [
@@ -38,16 +31,10 @@ app.use(express.static(img_path));
 const profile_path = path.join(__dirname, "/Public/Profile");
 app.use(express.static(profile_path));
 
-require("./database/db");
-
 const bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
-const fs = require('fs');
-const { promisify } = require('util');
-const writeFileAsync = promisify(fs.writeFile);
 
 const fetchAdmin = require("./routes/adminfetch");
 const loginRoutes = require("./routes/adminlogin");
